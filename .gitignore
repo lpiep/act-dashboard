@@ -1,0 +1,4 @@
+config.R
+cacert4.pem
+*.Rprofile
+*.Rhistory
