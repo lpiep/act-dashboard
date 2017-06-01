@@ -21,11 +21,11 @@ RUN R -e "install.packages(c('shiny', 'rmarkdown'), repos='https://cloud.r-proje
 RUN R -e "install.packages(c('ggplot2', 'dplyr', 'lubridate', 'tidyr', 'httr', 'stringr'), repos='https://cloud.r-project.org/')"
 
 # copy the app to the image
-RUN mkdir /root/uw-radical
-COPY . /root/uw-radical
+RUN mkdir /root/act-dashboard
+COPY *.csv config.R getMESA_data.R dashboard/*.R /root/act-dashboard/
 
 COPY Rprofile.site /usr/lib/R/etc/
 
 EXPOSE 3838
 
-CMD ["R", "-e shiny::runApp('/root/uw-radical/dashboard')"]
+CMD ["R", "-e shiny::runApp('/root/act-dashboard')"]
