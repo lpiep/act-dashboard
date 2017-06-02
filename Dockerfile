@@ -22,7 +22,9 @@ RUN R -e "install.packages(c('ggplot2', 'dplyr', 'lubridate', 'tidyr', 'httr', '
 
 # copy the app to the image
 RUN mkdir /root/act-dashboard
-COPY *.csv config.R getMESA_data.R dashboard/*.R /root/act-dashboard/
+RUN mkdir /root/act-dashboard/dashboard
+COPY *.csv config.R getMESA_data.R /root/act-dashboard/
+COPY dashboard/*.R /root/act-dashboard/dashboard/
 
 COPY Rprofile.site /usr/lib/R/etc/
 
